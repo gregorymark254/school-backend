@@ -15,17 +15,15 @@ class UserRoles(enum.Enum):
     front_office = 'front office'
     accounts = 'accounts'
     management = 'management'
-    user = 'user'
 
 
 class User(db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_name = db.Column(db.String(80), unique=False, nullable=False)
     middle_name = db.Column(db.String(80), unique=False, nullable=True)
     last_name = db.Column(db.String(80), unique=False, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    department = db.Column(db.String(120), unique=False, nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)
     role = db.Column(db.Enum(UserRoles), nullable=False)
     _password = db.Column("password", db.String(80), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)

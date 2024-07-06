@@ -34,7 +34,6 @@ def login():
         access_token = create_access_token(identity={'id': user.id, 'role': user.role.value})
         user_data = {
             'firstname': user.first_name,
-            'department': user.department,
             'role': user.role.value,
         }
         return {"access_token": access_token, "user": user_data}, 200
